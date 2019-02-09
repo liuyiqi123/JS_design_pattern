@@ -2,7 +2,7 @@
 
 var mediator = (function() {
   var topics = {};
-  
+
   var subscribe = function(topic, fn) {
     if (!topics[topic]) {
       topics[topic] = [];
@@ -28,7 +28,7 @@ var mediator = (function() {
   };
 
   return {
-    Publish: publish,
+    publish: publish,
     subscribe: subscribe,
     installTo: function(obj) {
       obj.subscribe = subscribe;
@@ -36,4 +36,4 @@ var mediator = (function() {
     }
   };
 
-})
+})();

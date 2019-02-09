@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>observer</title>
+  <script type="text/javascript" src="mediator.js"></script>
+  <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+  <h1>Chat</h1>
+  <form id="chatForm">
+    <label for="fromBox">Your Name:</label>
+    <input id="fromBox" type="text" />
+    <br />
+    <label for="toBox">Send to:</label>
+    <input id="toBox" type="text" />
+    <br />
+    <label for="chatBox">Message:</label>
+    <input id="chatBox" type="text" />
+    <button action="submit">Chat</button>
+  </form>
+
+  <div id="chatResult"></div>
+  <script>
+    $("#chatForm").on("submit", function(e) {
+      e.preventDefault();
+      var text = $("#chatBox").val(),
+        from = $("#fromBox").val(),
+        to = $("#toBox").val();
+      mediator.publish("newMessage", {
+        message: text,
+        from: from,
+        to: to
+      });
+    })
+
+    function displayChat(data) {
+      var date = new Date(),
+        msg = data.from + " said \"" + data.message + " \"to " + data.to;
+      $("#chatResult").prepend("" + msg + "(" + date.toLocaleTimeString() + ")");
+    }
+
+    function logChat(data) {
+      if (window.console) {
+        console.log(data);
+      }
+    }
+
+    mediator.subscribe("newMessage", displayChat);
+    mediator.subscribe("newMessage", logChat);
+  </script>
+</body>
+
+</html>

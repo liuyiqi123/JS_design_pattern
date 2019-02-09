@@ -12,7 +12,6 @@ var myModule = {
   method: function() {
     console.log("Where are you?");
   },
-
   //输出当前配置信息
   method1: function() {
     console.log("Caching is:" + (this.config.useCaching ? "enabled" : "disabled"));
@@ -89,6 +88,7 @@ var myrevealingModule = function() {
   function publicGetName() {
     privateFn();
   };
+
   return {
     setName: publicSetName,
     greeting: publicVar,

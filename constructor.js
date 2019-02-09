@@ -37,7 +37,7 @@ function Car(model, year, miles) {
 
   this.toString = function() {
     return this.model + " has done " + this.miles + "miles";
-  }; //实力化后分别定义，未共享
+  }; //实例化后分别定义，未共享
 }
 
 var civic = new Car("Honda Civic", 2009, 20000);

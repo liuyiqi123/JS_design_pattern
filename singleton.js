@@ -29,6 +29,6 @@ var mySingleton = (function() {
   };
 })();
 
-var singleA=mySingleton.getInstance();
-var singleB=mySingleton.getInstance();
-console.log(singleA.getRandom()===singleB.getRandom());
+var singleA = mySingleton.getInstance();
+var singleB = mySingleton.getInstance();
+console.log(singleA.getRandom() === singleB.getRandom());
